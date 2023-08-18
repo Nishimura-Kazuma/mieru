@@ -1,0 +1,4 @@
+.DS_Store
+
+# docker-compose.yml 中で利用する環境変数を格納するファイル
+/development.env
