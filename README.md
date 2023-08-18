@@ -44,7 +44,7 @@ cd react-rails-web-app
   echo 'TZ="Asia/Tokyo"' >> development.env
   ```
 
-#### `backend/config/database.yml` で読み込む環境ファイルの設定
+#### `backend/config/database.yml` で読み込む環境ファイル `.env` の設定
 
 - `backend` ディレクトリへ移動
 
@@ -128,7 +128,7 @@ cd react-rails-web-app
 
 - 動作確認
 
-  ブラウザで [localhost:3000](http://localhost:3000/) にアクセスした際に、以下のような文字が表示されていれば正しく動作しています。
+  ブラウザで [localhost:3000](http://localhost:3000/) にアクセスした際に、以下のような文字列が表示されていれば正しく動作しています。
 
   ***
 
@@ -142,7 +142,7 @@ cd react-rails-web-app
 
 - React の終了
 
-  ターミナル上で `control + C` キーにより React を終了する。
+  ターミナル上で `control` + `C` キーにより React を終了する。
 
 - コンテナから出る
   ```sh
