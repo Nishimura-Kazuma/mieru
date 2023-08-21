@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { getSamples } from "./api";
-// import logo from "./logo.svg";
-import "./App.css";
 
 type Sample = {
   id: number;
