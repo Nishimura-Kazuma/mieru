@@ -9,7 +9,8 @@
   },
   "[typescript]": {
     "javascript.preferences.quoteStyle": "single",
-    "typescript.preferences.quoteStyle": "single"
+    "typescript.preferences.quoteStyle": "single",
+    "editor.tabSize": 2
   },
   "[ruby]": {
     "editor.tabSize": 2
