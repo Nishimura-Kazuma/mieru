@@ -10,5 +10,8 @@
   "[typescript]": {
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single"
+  },
+  "[ruby]": {
+    "editor.tabSize": 2
   }
 }
