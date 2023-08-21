@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { getSamples } from "./api";
+import { useEffect, useState } from 'react';
+import { getSamples } from './api';
 // import logo from "./logo.svg";
-import "./App.css";
+import './App.css';
 
 type Sample = {
   id: number;
@@ -20,7 +20,7 @@ const App = () => {
         const todosData = await getSamples();
         setTodos(todosData);
       } catch (error) {
-        console.error("Error while fetching todos:", error);
+        console.error('Error while fetching todos:', error);
       }
     };
 
