@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+## ディレクトリ構造
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `src/`
 
-## Available Scripts
+アプリケーションの主要なコードが格納されているディレクトリ。
 
-In the project directory, you can run:
+- **`assets/`**: 画像などの静的ファイルを格納。バックログ 6 まで使わなそう
 
-### `npm start`
+- **`components/`**: 再利用可能な UI コンポーネントを格納。各コンポーネントは独自のディレクトリを持ち、その中にはコンポーネントのファイルが含まれる。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - **`Header/`**:
+    - `index.tsx`: メインのコンポーネントファイル。
+  - **`Footer/`**:
+    - `index.tsx`: メインのコンポーネントファイル。
+  - **`PostList/`**:
+    - `index.tsx`: 投稿のリストを表示するコンポーネント。
+  - **`ReplyForm/`**:
+    - `index.tsx`: 投稿への返信を行うためのフォームコンポーネント。
+  - **`BestAnswerButton/`**:
+    - `index.tsx`: ベストアンサーとして返信をマークするボタン。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **`containers/`**: Redux のストアに接続されている、外部 API からデータを取得するコンポーネントを格納。例)コンポーネントの PostList にデータを渡す。
 
-### `npm test`
+  - **`Home/`**:
+    - `index.tsx`: ホームページのメインコンテナ。投稿のリストを取得して表示。
+  - **`PostDetail/`**:
+    - `index.tsx`: 単一の投稿とその返信の詳細を表示。
+  - **`EditPost/`**:
+    - `index.tsx`: 既存の投稿を編集するためのフォーム。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **`pages/`**: アプリケーションの各ビュー/ページを表すコンポーネントを格納。
 
-### `npm run build`
+  - `HomePage.tsx`: アプリケーションのメインランディングページ。
+  - `PostDetailPage.tsx`: 単一の投稿の詳細ビュー。
+  - `EditPostPage.tsx`: 投稿を編集するページ。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **`store/`**: Redux の状態管理に関連するものを格納。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - **`actions/`**:
+    - `postsActions.ts`: 投稿に関するアクションクリエーター。
+  - **`reducers/`**:
+    - `postsReducer.ts`: アクションを処理し、状態を更新するためのリデューサー。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **`utils/`**: アプリケーション全体で使用されるユーティリティ関数や定数を格納。開発中に必要だったら使う。
 
-### `npm run eject`
+- **`App.tsx`**: ルーティングや全体のレイアウトを設定するメインのアプリケーションコンポーネント。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **`index.tsx`**: アプリケーションのエントリポイント。メインの App コンポーネントをレンダリングし、必要なプロバイダー（例: Redux Provider）でラップする。
