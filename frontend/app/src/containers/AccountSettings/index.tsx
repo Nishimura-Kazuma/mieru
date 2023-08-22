@@ -14,15 +14,20 @@ function FetchUserDataButton() {
       // const data = await axios.get(
       //   `https://jsonplaceholder.typicode.com/users/${id}`,
       // );
-      const data = await axios.get(`${API_BASE_URL}/user`);
+      const data = await axios.get(`${API_BASE_URL}/user/${id}`);
 
       const userId: number = data.data.id;
       const userName: string = data.data.name;
+      const userAttribute: string = data.data.user_attribute;
+
+      // console.log(userId);
+      // console.log(userName);
+      // console.log(userAttribute);
 
       // アクションをディスパッチしてデータをストアに保存
       const action: UserActionTypes = {
         type: SAVE_USER_NAME,
-        payload: { id: userId, name: userName },
+        payload: { id: userId, name: userName, user_attribute: userAttribute },
       };
       dispatch(action);
       history.push('/posts');
