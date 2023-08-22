@@ -1,5 +1,7 @@
-function HomePage() {
-  return <h1>Home</h1>;
-}
+import Header from '../components/Header/header';
 
-export default HomePage;
+const homePage = () => {
+  return <Header user="username" point={100} />;
+};
+
+export { homePage };
