@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getSamples } from './api';
+import { getSamples, postSamples } from './api';
 // import logo from "./logo.svg";
-import './App.css';
 
 type Sample = {
   id: number;
@@ -14,27 +13,34 @@ const App = () => {
   // Todoリストの初期値を空の配列に設定
   const [todos, setTodos] = useState<Sample[]>([]);
 
-  useEffect(() => {
-    const fetchTodos = async () => {
-      try {
-        const todosData = await getSamples();
-        setTodos(todosData);
-      } catch (error) {
-        console.error('Error while fetching todos:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchTodos = async () => {
+  //     try {
+  //       const todosData = await getSamples();
+  //       setTodos(todosData);
+  //     } catch (error) {
+  //       console.error('Error while fetching todos:', error);
+  //     }
+  //   };
 
-    fetchTodos();
-  }, []);
+  //   fetchTodos();
+  // }, []);
+
+  const handleButtonClick = () => {
+    const res = postSamples();
+  };
+
+  const handleButtonClick2 = () => {
+    const getres = getSamples();
+  };
 
   return (
     <div className="container">
       <h1>ToDo List</h1>
-      <ul>
-        {todos.map((sample: any) => (
-          <li key={sample.id}>{sample.title}</li>
-        ))}
-      </ul>
+
+      <button onClick={handleButtonClick}>送信</button> <br />
+      <br/>
+      <button onClick={handleButtonClick2}>受信</button>
     </div>
   );
 };
@@ -61,3 +67,27 @@ const App = () => {
 // }
 
 export default App;
+
+
+//postsテーブルの表示
+{/* <ul>
+        {todos.map((post: any) => (
+          <li key={post.id}>
+            post_id: {post.user_id} <br />
+            title: {post.title} <br />
+            content: {post.content} <br />
+            completed: {post.completed} <br />
+          
+          </li>
+        ))}
+      </ul> */}
+
+
+      // <ul>
+      //   {todos.map((sample: any) => (
+      //     <li key={sample.id}>
+      //     {sample.title}</li>
+      //   ))}
+        
+      // </ul>
+

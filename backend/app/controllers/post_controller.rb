@@ -20,15 +20,15 @@ class PostController < ApplicationController
       posts = Post.all
 
         render json: {
-        posts: posts,
-        new_post: new_post
+        posts: posts
+        # new_post: new_post
       }
     else
-      render json: {
-        posts = Post.all
-        posts: posts,
-        new_post: new_post
-      }
+      # render json: {
+      #   posts = Post.all,
+      #   posts: posts,
+      #   new_post: new_post
+      # }
     end
   end
 
@@ -43,5 +43,5 @@ end
 private
   # ストロングパラメータ
   def post_params
-    params.require(:post).permit(:user_id,:title, :content, :is_completed)
+    params.require(:post).permit(data:[user_id, :title, :content, :is_completed])
   end
