@@ -9,7 +9,7 @@ const App = () => {
     <div className="container">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/post" component={homePage} />
+          <Route exact path="/posts" component={homePage} />
           <Route exact path="/post/:id" component={postDtail} />
           <Route exact path="/post/:id/edit" component={editPostPage} />
           <Route exact path="/account_settings" component={AccountSettings} />
