@@ -2,9 +2,11 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { SAVE_USER_NAME, UserActionTypes } from './types';
 import { API_BASE_URL } from '../API_BASE_URL';
+import { useHistory } from 'react-router-dom';
 
 function FetchUserDataButton() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const fetchUserData = async (id: number) => {
     try {
@@ -23,6 +25,7 @@ function FetchUserDataButton() {
         payload: { id: userId, name: userName },
       };
       dispatch(action);
+      history.push('/posts');
     } catch (error) {
       console.error('Error fetching data:', error);
     }
