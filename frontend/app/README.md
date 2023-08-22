@@ -45,4 +45,21 @@
 
 - **`App.tsx`**: ルーティングや全体のレイアウトを設定するメインのアプリケーションコンポーネント。
 
+
+## Code formatter 関連の追加コマンド
+
+### `npm format [調査対象のファイル/ディレクトリへのパス]`
+
+`.prettierrc.js` に従ったフォーマットになっているかを調べる。
+
+### `npm format:fix [整形対象のファイル/ディレクトリへのパス]`
+
+`.prettierrc.js` に従っていないファイルのフォーマット整形を行う。
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+=======
 - **`index.tsx`**: アプリケーションのエントリポイント。メインの App コンポーネントをレンダリングし、必要なプロバイダー（例: Redux Provider）でラップする。
