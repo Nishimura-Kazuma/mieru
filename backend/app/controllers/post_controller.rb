@@ -14,7 +14,6 @@ class PostController < ApplicationController
 
   def create
     
-    post = Post.new(post_params)
     new_post = Post.new
     if post.save
       posts = Post.all
