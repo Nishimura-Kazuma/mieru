@@ -1,1 +1,5 @@
-export {};
+const EditPostPage = () => {
+  return;
+};
+
+export { EditPostPage };
