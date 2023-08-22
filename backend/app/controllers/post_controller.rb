@@ -1,21 +1,34 @@
 class PostController < ApplicationController
 
   def index
-    @posts = Post.all
-    @new_post = Post.new
+    posts = Post.all
+    new_post = Post.new
+      render json: {
+      posts: posts,
+      new_post: new_post
+    }
   end
 
   def show 
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to posts_path
+    
+    post = Post.new(post_params)
+    new_post = Post.new
+    if post.save
+      posts = Post.all
+
+        render json: {
+        posts: posts,
+        new_post: new_post
+      }
     else
-      @posts = Post.all
-      @new_post = @post
-      render :index
+      render json: {
+        posts = Post.all
+        posts: posts,
+        new_post: new_post
+      }
     end
   end
 
