@@ -1,18 +1,25 @@
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-const API_BASE_URL = 'http://localhost:3001';
+import { connect } from 'react-redux';
+import { API_BASE_URL } from '../../containers/API_BASE_URL';
+import { User } from '../../containers/AccountSettings/types';
 
 // 投稿フォームのデータ型定義
 interface PostForm {
   title: string;
   content: string;
+  scope: string;
 }
 
-interface PostData {
-  title: string;
-  content: string;
-  user_id: number;
-}
+// interface PostData {
+//   title: string;
+//   content: string;
+//   user_id: number;
+// }
+
+// const mapStateToProps = (state: User) => {
+//   return { id: state.id, name: state.name, user_attribute: state.user_attribute };
+// };
 
 const PostFormTest = () => {
   const {
@@ -24,11 +31,15 @@ const PostFormTest = () => {
   // フォームの submit イベントで呼ばれる関数
   const onSubmit = (formData: PostForm) => {
     const user_id = 1;
+    // const is_completed: Boolean = false;
+    // console.log(formData);
     axios
       .post(`${API_BASE_URL}/post`, {
         title: formData.title,
         content: formData.content,
         user_id: user_id,
+        // is_completed: is_completed,
+        scope: formData.scope,
       })
       .then((response) => {
         console.log(response);
@@ -38,12 +49,18 @@ const PostFormTest = () => {
       });
   };
 
+  const radioButtons = [
+    { id: 'all', label: '全員', value: '全員' },
+    { id: 'teachers_only', label: '保育士のみ', value: '保育士のみ' },
+  ];
+
   return (
     <>
       <h2>投稿フォーム (テスト用)</h2>
       <section>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="title">title</label>
+          <label htmlFor="title">タイトル</label>
+          <br />
           {/* {...register("フィールド名", { ルール })}で、フィールド登録、必ルールを設定 */}
           <input
             id="title"
@@ -55,8 +72,8 @@ const PostFormTest = () => {
             })}
           />
           <p>{errors.title?.message as React.ReactNode}</p>
-
-          <label htmlFor="content">content</label>
+          <label htmlFor="content">本文</label>
+          <br />
           {/* {...register("フィールド名", { ルール })}で、フィールド登録、必ルールを設定 */}
           <input
             id="content"
@@ -68,7 +85,33 @@ const PostFormTest = () => {
             })}
           />
           <p>{errors.content?.message as React.ReactNode}</p>
-
+          <label htmlFor="scope">公開範囲</label>
+          <br />
+          {/* name 属性を同じにすると1つしかチェックできないようになる */}
+          {radioButtons.map((radio) => {
+            const { id, label, value } = radio;
+            return (
+              <label key={id}>
+                <input
+                  type="radio"
+                  value={value}
+                  {...register('scope', { required: '入力してください' })}
+                />
+                {label}
+              </label>
+            );
+          })}
+          {/* <input
+            id="scope"
+            name="scope_selection"
+            type="radio"
+            value="保護者・保育士全員"
+            defaultChecked
+          />
+          保護者・保育士全員
+          <input id="scope" name="scope_selection" type="radio" value="保育士のみ" />
+          保育士のみ
+          <br /> */}
           <button type="submit">登録</button>
         </form>
       </section>
@@ -76,4 +119,5 @@ const PostFormTest = () => {
   );
 };
 
+// export default connect(mapStateToProps)(PostFormTest);
 export default PostFormTest;
