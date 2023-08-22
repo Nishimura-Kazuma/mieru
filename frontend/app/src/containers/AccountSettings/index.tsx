@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../API_BASE_URL';
 function FetchUserDataButton() {
   const dispatch = useDispatch();
 
-  const fetchData = async (id: number) => {
+  const fetchUserData = async (id: number) => {
     try {
       /*テスト用api */
       // const data = await axios.get(
@@ -29,11 +29,32 @@ function FetchUserDataButton() {
   };
 
   return (
-    <div>
-      <button onClick={() => fetchData(1)}>保護者1</button>
-      <button onClick={() => fetchData(2)}>保護者2</button>
-      <button onClick={() => fetchData(3)}>保育士1</button>
-      <button onClick={() => fetchData(4)}>保育士2</button>
+    <div className="d-flex flex-column align-items-center justify-content-center vh-100">
+      <h1 className="mb-4">ユーザー選択</h1>
+      <button
+        onClick={() => fetchUserData(1)}
+        className="btn btn-primary btn-lg btn-block mb-3 w-50"
+      >
+        保護者1
+      </button>
+      <button
+        onClick={() => fetchUserData(2)}
+        className="btn btn-primary btn-lg btn-block mb-3 w-50"
+      >
+        保護者2
+      </button>
+      <button
+        onClick={() => fetchUserData(3)}
+        className="btn btn-success btn-lg btn-block mb-3 w-50"
+      >
+        保育士1
+      </button>
+      <button
+        onClick={() => fetchUserData(4)}
+        className="btn btn-success btn-lg btn-block mb-3 w-50"
+      >
+        保育士2
+      </button>
     </div>
   );
 }

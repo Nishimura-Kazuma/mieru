@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import App from './App';
 import UserReducer from './containers/AccountSettings/AccountReducer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore({
   reducer: {
