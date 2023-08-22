@@ -11,9 +11,9 @@ Sample.create(title: "sample3", description: "Again, this is sample data.", chec
 
 users = User.create!(
   [
-    {name: '田中',attribute: '保護者' },
-    {name: '鈴木',attribute: '保護者' },
-    {name: '木村',attribute: '保育士' },
-    {name: '橘',attribute: '保育士' },
+    {name: '田中',position: '保護者' },
+    {name: '鈴木',position: '保護者' },
+    {name: '木村',position: '保育士' },
+    {name: '橘',position: '保育士' },
   ]
 )
