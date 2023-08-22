@@ -1,10 +1,10 @@
-const SAVE_USER_NAME = 'SAVE_USER_NAME';
+import { SAVE_USER_NAME } from './types';
 
 const initialState = {
-  userData: '',
+  userData: { id: 0, name: '' },
 };
 
-const userReducer = (state = initialState, action: any) => {
+const UserReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SAVE_USER_NAME:
       return {
@@ -15,5 +15,4 @@ const userReducer = (state = initialState, action: any) => {
   }
 };
 
-export default userReducer;
-export { SAVE_USER_NAME };
+export default UserReducer;
