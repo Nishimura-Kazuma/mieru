@@ -1,7 +1,7 @@
-import FetchDataButton from '../containers/Home';
+import FetchUserDataButton from '../containers/AccountSettings';
 
-const AccountSettings: React.FC = (user) => {
-  return FetchDataButton();
+const AccountSettings: React.FC = () => {
+  return FetchUserDataButton();
 };
 
 export default AccountSettings;

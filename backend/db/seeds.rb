@@ -8,3 +8,13 @@
 Sample.create(title: "sample1", description: "This is sample data.", checked: true)
 Sample.create(title: "sample2", description: "This is also sample data.", checked: false)
 Sample.create(title: "sample3", description: "Again, this is sample data.", checked: false)
+
+users = User.create!(
+  [
+    {name: '田中',position: '保護者' },
+    {name: '鈴木',position: '保護者' },
+    {name: '木村',position: '保育士' },
+    {name: '橘',position: '保育士' },
+  ]
+)
+
