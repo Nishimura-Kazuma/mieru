@@ -17,3 +17,4 @@ users = User.create!(
     {name: '橘',position: '保育士' },
   ]
 )
+
