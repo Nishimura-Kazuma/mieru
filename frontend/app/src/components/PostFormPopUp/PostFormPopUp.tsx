@@ -1,8 +1,7 @@
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import { API_BASE_URL } from '../../containers/API_BASE_URL';
-import { User } from '../../containers/AccountSettings/types';
+import { useSelector } from 'react-redux';
 
 // 投稿フォームのデータ型定義
 interface PostForm {
@@ -11,34 +10,24 @@ interface PostForm {
   scope: string;
 }
 
-// interface PostData {
-//   title: string;
-//   content: string;
-//   user_id: number;
-// }
-
-// const mapStateToProps = (state: User) => {
-//   return { id: state.id, name: state.name, user_attribute: state.user_attribute };
-// };
-
-const PostFormTest = () => {
+const PostFormPopUp = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<PostForm>({ mode: 'onChange' });
 
+  // ログインユーザーの情報をReduxから取得
+  const userData = useSelector((state: any) => state.userData);
   // フォームの submit イベントで呼ばれる関数
   const onSubmit = (formData: PostForm) => {
-    const user_id = 1;
-    // const is_completed: Boolean = false;
-    // console.log(formData);
+    // ログインユーザーのIDを取得 例:userData.userData.id 第一引数はstateの型, 第二引数はstateの中のデータ, 第三引数はstateの中のデータの型
+    const user_id = userData.userData.id;
     axios
       .post(`${API_BASE_URL}/post`, {
         title: formData.title,
         content: formData.content,
         user_id: user_id,
-        // is_completed: is_completed,
         scope: formData.scope,
       })
       .then((response) => {
@@ -101,17 +90,6 @@ const PostFormTest = () => {
               </label>
             );
           })}
-          {/* <input
-            id="scope"
-            name="scope_selection"
-            type="radio"
-            value="保護者・保育士全員"
-            defaultChecked
-          />
-          保護者・保育士全員
-          <input id="scope" name="scope_selection" type="radio" value="保育士のみ" />
-          保育士のみ
-          <br /> */}
           <button type="submit">登録</button>
         </form>
       </section>
@@ -119,5 +97,4 @@ const PostFormTest = () => {
   );
 };
 
-// export default connect(mapStateToProps)(PostFormTest);
-export default PostFormTest;
+export default PostFormPopUp;
