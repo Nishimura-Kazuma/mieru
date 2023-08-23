@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { API_BASE_URL } from '../../containers/API_BASE_URL';
 import PostCell from '../../components/PostCell';
 
@@ -36,12 +37,42 @@ const PostList: React.FC = () => {
     fetchPostData();
   }, []);
 
-  console.log(postData);
+  // console.log(postData);
+
+  const loginUserData = useSelector((state: any) => state.userData);
+  // console.log(loginUserData.userData);
 
   return (
     <div>
       <h2 className="Heading">相談一覧</h2>
-      {postData ? (
+      {postData && loginUserData ? (
+        <>
+          {loginUserData.userData.user_attribute === '保育士' ? (
+            // ボタンの設置 + スコープによるメッセージの分類
+            <div className="CardList">
+              {postData.map((post) => (
+                <div key={post.id}>
+                  <PostCell
+                    title={post.title}
+                    userName={post.user_name}
+                    isCompleted={post.is_completed}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <p>保護者: スコープが all の質問のみを表示</p>
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <p>データを読み込んでいます...</p>
+        </>
+      )}
+      {/* {postData && loginUserData ? (
+          {loginUserData.userData.userAttribute === "保育士" ? (
         <div className="CardList">
           {postData.map((post) => (
             <div key={post.id}>
@@ -53,9 +84,10 @@ const PostList: React.FC = () => {
             </div>
           ))}
         </div>
+          ):(<></>)}
       ) : (
         <p>データを読み込んでいます...</p>
-      )}
+      )} */}
     </div>
   );
 };
