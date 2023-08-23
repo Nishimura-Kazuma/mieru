@@ -1,5 +1,7 @@
+import Header from '../components/Header/header';
+
 const EditPostPage = () => {
-  return;
+  return <Header />;
 };
 
-export { EditPostPage };
+export default EditPostPage;
