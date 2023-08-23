@@ -1,7 +1,7 @@
 import Header from '../components/Header/header';
 
-const editPostPage = () => {
+const EditPostPage = () => {
   return <Header />;
 };
 
-export { editPostPage };
+export default EditPostPage;
