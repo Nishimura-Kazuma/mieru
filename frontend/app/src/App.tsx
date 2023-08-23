@@ -12,7 +12,7 @@ const App = () => {
           <Route exact path="/posts" component={homePage} />
           <Route exact path="/post/:id" component={postDtail} />
           <Route exact path="/post/:id/edit" component={editPostPage} />
-          <Route exact path="/account_settings" component={AccountSettings} />
+          <Route exact path="/" component={AccountSettings} />
         </Switch>
       </BrowserRouter>
     </div>
