@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../../containers/API_BASE_URL';
+import PostCell from '../../components/PostCell';
 
 interface Post {
   id: number;
   title: string;
   user_name: string;
+  scope: string;
+  is_completed: boolean;
   // num_of_comments: number;
   // last_updated_at: string;
 }
@@ -41,13 +44,13 @@ const PostList: React.FC = () => {
       {postData ? (
         <ul>
           {postData.map((post) => (
-            <li key={post.id} className="list-unstyled">
-              <div>
-                {/* <p>{post.user_name}</p> */}
-                <h3>{post.title}</h3>
-                <div></div>
-              </div>
-            </li>
+            <div key={post.id}>
+              <PostCell
+                title={post.title}
+                userName={post.user_name}
+                isCompleted={post.is_completed}
+              />
+            </div>
           ))}
         </ul>
       ) : (
