@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import MIERUN_LOGO from '../../assets/mierun_logo.png';
 
 const Header = () => {
   const history = useHistory();
@@ -10,24 +11,16 @@ const Header = () => {
     history.push('/posts');
   };
 
-  const moveRoot = () => {
-    history.push('/');
-  };
-
   return (
     <header className="fixed-top d-flex justify-content-between align-items-center p-3 bg-light w-100 border-bottom">
-      <div
-        onClick={moveHome}
-        className="font-weight-bold"
-        style={{ cursor: 'pointer', fontSize: '50px' }}
-      >
-        mierun
+      <div onClick={moveHome}>
+        <img src={MIERUN_LOGO} alt="Logo" />
       </div>
-      <div style={{ fontSize: '30px' }}>
-        name: {userData && userData.name ? userData.name : 'Loading...'}
-        <button onClick={moveRoot} className="ms-3">
-          user
-        </button>
+      <div style={{ fontSize: '20px' }}>
+        name:{' '}
+        {userData && userData.userData.name
+          ? userData.userData.name
+          : 'Loading...'}
       </div>
     </header>
   );

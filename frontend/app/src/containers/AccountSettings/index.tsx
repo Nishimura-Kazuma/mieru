@@ -3,6 +3,7 @@ import axios from 'axios';
 import { SAVE_USER_NAME, UserActionTypes } from './types';
 import { API_BASE_URL } from '../API_BASE_URL';
 import { useHistory } from 'react-router-dom';
+import Header from '../../components/Header/header';
 
 function FetchUserDataButton() {
   const dispatch = useDispatch();
@@ -37,32 +38,35 @@ function FetchUserDataButton() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center vh-100">
-      <h1 className="mb-4">ユーザー選択</h1>
-      <button
-        onClick={() => fetchUserData(1)}
-        className="btn btn-primary btn-lg btn-block mb-3 w-50"
-      >
-        保護者1
-      </button>
-      <button
-        onClick={() => fetchUserData(2)}
-        className="btn btn-primary btn-lg btn-block mb-3 w-50"
-      >
-        保護者2
-      </button>
-      <button
-        onClick={() => fetchUserData(3)}
-        className="btn btn-success btn-lg btn-block mb-3 w-50"
-      >
-        保育士1
-      </button>
-      <button
-        onClick={() => fetchUserData(4)}
-        className="btn btn-success btn-lg btn-block mb-3 w-50"
-      >
-        保育士2
-      </button>
+    <div>
+      <Header />
+      <div className="d-flex flex-column align-items-center justify-content-center vh-100">
+        <h1 className="mb-4">ユーザー選択</h1>
+        <button
+          onClick={() => fetchUserData(1)}
+          className="btn btn-primary btn-lg btn-block mb-3 w-50"
+        >
+          保護者1
+        </button>
+        <button
+          onClick={() => fetchUserData(2)}
+          className="btn btn-primary btn-lg btn-block mb-3 w-50"
+        >
+          保護者2
+        </button>
+        <button
+          onClick={() => fetchUserData(3)}
+          className="btn btn-success btn-lg btn-block mb-3 w-50"
+        >
+          保育士1
+        </button>
+        <button
+          onClick={() => fetchUserData(4)}
+          className="btn btn-success btn-lg btn-block mb-3 w-50"
+        >
+          保育士2
+        </button>
+      </div>
     </div>
   );
 }
