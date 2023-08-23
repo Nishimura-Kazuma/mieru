@@ -2,33 +2,22 @@ class PostController < ApplicationController
 
   def index
     posts = Post.all
-    new_post = Post.new
-      render json: {
-      posts: posts,
-      new_post: new_post
-    }
+    render json: posts
   end
 
   def show 
   end
 
   def create
-    
-    new_post = Post.new
-    if post.save
-      posts = Post.all
+    new_post = Post.new(post_params)
 
-        render json: {
-        posts: posts
-        # new_post: new_post
-      }
+    # 正しく保存できたかどうかをフロント側で確認できるようにデータを送る
+    if new_post.save
+      render json: { message: "request is received by server" }
     else
-      # render json: {
-      #   posts = Post.all,
-      #   posts: posts,
-      #   new_post: new_post
-      # }
+      render json: { message: "failed!!" }
     end
+
   end
 
   def update
@@ -42,5 +31,5 @@ end
 private
   # ストロングパラメータ
   def post_params
-    params.require(:post).permit(data:[user_id, :title, :content, :is_completed])
+    params.require(:post).permit(:user_id, :title, :content, :is_completed, :scope)
   end

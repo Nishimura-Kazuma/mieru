@@ -1,7 +1,7 @@
 import Header from '../components/Header/header';
 
-const postDtail = () => {
-  return <Header user="username" point={100} />;
+const PostDtail = () => {
+  return <Header />;
 };
 
-export { postDtail };
+export default PostDtail;
