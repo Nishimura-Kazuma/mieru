@@ -1,6 +1,7 @@
 import Footer from '../components/Footer/footer';
 import Header from '../components/Header/header';
 import PostFormPopUp from '../components/PostFormPopUp/PostFormPopUp';
+import PostList from '../components/PostList';
 
 const HomePage = () => {
   return (
@@ -9,7 +10,8 @@ const HomePage = () => {
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">
         <main>
           {/* ここに主要なコンテンツを追加 */}
-          <PostFormPopUp />
+          <PostList />
+          {/* <PostFormPopUp /> */}
         </main>
       </div>
       <Footer />
