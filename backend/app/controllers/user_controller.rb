@@ -1,21 +1,38 @@
 class UserController < ApplicationController
   
   # def index
-  #   users_original = User.all
+  #   main_user = User.find(1)
+  #   old_comments = User.all
   #   users = []  # usersを初期化
   
-  #   users_original.each do |user|
-  #     user_ans = {}  # user_ansを初期化
-  #     second_user = User.find(user.id)  # この行が正しいか確認してください
+  #   main_user_data = {}  # メインユーザーのデータを格納するハッシュ
   
-  #     user_ans["id"] = user.id
-  #     user_ans["name"] = user.name
-  #     user_ans["second_name"] = second_user.name
+  #   main_user_data["id"] = main_user.id
+  #   main_user_data["name"] = main_user.name
   
-  #     users << user_ans  # users配列にデータを追加
+  #   users << main_user_data  # users配列にメインユーザーのデータを追加
+  
+  #   comments = []
+  
+  #   old_comments.each do |comment_ans|
+  #     comment_data = {}  # コメントのデータを格納するハッシュ
+  
+  #     comment_data["id"] = comment_ans.id
+  #     comment_data["content"] = comment_ans.name
+  
+  #     comments << comment_data  # コメントをcomments配列に追加
   #   end
-  #     render json: users
-  # end
+  
+    users_data = {
+      "id" => main_user.id,    # メインユーザーのID
+      "name" => main_user.name,  # メインユーザーの名前
+      "comments" => comments    # メインユーザーに関連付けられたコメントの配列
+    }
+  
+    render json: [users_data]  # メインユーザーデータを配列に格納してJSONとして返す
+  end
+  
+  
 
   
   def show
