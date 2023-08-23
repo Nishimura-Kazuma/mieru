@@ -40,9 +40,9 @@ const PostList: React.FC = () => {
 
   return (
     <div>
-      <h2>投稿一覧</h2>
+      <h2 className="Heading">相談一覧</h2>
       {postData ? (
-        <ul>
+        <div className="CardList">
           {postData.map((post) => (
             <div key={post.id}>
               <PostCell
@@ -52,7 +52,7 @@ const PostList: React.FC = () => {
               />
             </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>データを読み込んでいます...</p>
       )}
