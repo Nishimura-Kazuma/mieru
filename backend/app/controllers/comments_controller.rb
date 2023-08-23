@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   def create
-    # post = Post.find(params[:post_id])
-    now_user = comment.user
+    comment_params = params.require(:comment).permit(:user_id, :post_id, :content ,:is_best_answer)
+    now_user_id = post_params[:user_id]
+    now_user = User.find(now_user_id)
     comment = now_user.comments.new(comment_params)
     
     # 正しく保存できたかどうかをフロント側で確認できるようにデータを送る
