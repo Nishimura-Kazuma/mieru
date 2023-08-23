@@ -1,20 +1,20 @@
+import Footer from '../components/Footer/footer';
 import Header from '../components/Header/header';
-import PostFormTest from '../components/PostFormTest/postFormTest';
-import AccountSettings from './AccountSettings';
-// import { User } from '../containers/AccountSettings/types';
+import PostFormPopUp from '../components/PostFormPopUp/PostFormPopUp';
 
-const homePage = () => {
+const HomePage = () => {
   return (
-    <>
+    <div className="d-flex flex-column vh-100">
       <Header />
-      <AccountSettings />
-      <PostFormTest />
-    </>
+      <div className="flex-grow-1 d-flex justify-content-center align-items-center">
+        <main>
+          {/* ここに主要なコンテンツを追加 */}
+          <PostFormPopUp />
+        </main>
+      </div>
+      <Footer />
+    </div>
   );
 };
 
-// const mapStateToProps = (state: User) => {
-//   return { id: state.id, name: state.name, user_attribute: state.user_attribute };
-// };
-
-export { homePage };
+export default HomePage;
