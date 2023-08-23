@@ -25,9 +25,34 @@ class PostController < ApplicationController
   end
 
   def show 
-    post = Post.find(params[:id])
-    render json: post
-    comments = post.comments
+    old_post = Post.find(params[:id])
+    post_maker = post_original.user
+    post = {}
+    post["id"] = post.id
+    post["title"] = post.title
+    post["content"] = post.content
+    post["is_completed"] = post.is_completed
+    post["scope"] = post.scope
+    post["user_name"] = post_maker.name
+    post["created_at"] = post.created_at
+    
+
+    old_comments = old_post.comments
+    comments = []
+    old_comments.each do |comment|
+      cmt = {}  # post_ansを初期化
+      comment_maker = User.find(comment.user_id)
+  
+      cmt["content"] = comment.content
+      cmt["is_best_answer"] = comment.is_best_answer
+      cmt["user_name"] = comment_maker.name
+      cmt["created_at"] = comment.created_at
+      cmt["updated_at"] = comment.updated_at
+  
+      comments << cmt  # posts配列にデータを追加
+    end
+  
+    render json: {post , comments}
   end
 
   def create
