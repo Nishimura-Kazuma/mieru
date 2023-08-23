@@ -23,17 +23,14 @@ class UserController < ApplicationController
   #     comments << comment_data  # コメントをcomments配列に追加
   #   end
   
-    users_data = {
-      "id" => main_user.id,    # メインユーザーのID
-      "name" => main_user.name,  # メインユーザーの名前
-      "comments" => comments    # メインユーザーに関連付けられたコメントの配列
-    }
+    # users_data = {
+    #   "id" => main_user.id,    # メインユーザーのID
+    #   "name" => main_user.name,  # メインユーザーの名前
+    #   "comments" => comments    # メインユーザーに関連付けられたコメントの配列
+    # }
   
-    render json: [users_data]  # メインユーザーデータを配列に格納してJSONとして返す
-  end
-  
-  
-
+  #   render json: [users_data]  # メインユーザーデータを配列に格納してJSONとして返す
+  # end
   
   def show
     user = User.find(params[:id])
