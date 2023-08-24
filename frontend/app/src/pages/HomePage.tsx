@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import PopUp from '../components/PostFormPopUp/PopUp';
 import PostList from '../components/PostList';
 import Fab from '@mui/material/Fab';
@@ -52,7 +52,7 @@ const HomePage = () => {
               color="secondary"
               aria-label="add"
               sx={{
-                position: 'absolute',
+                position: 'fixed',
                 bottom: (theme: any) => theme.spacing(2),
                 left: (theme: any) => theme.spacing(2),
               }}

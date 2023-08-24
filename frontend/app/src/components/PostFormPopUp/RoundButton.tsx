@@ -13,7 +13,7 @@ export default function FloatingActionButtonSize({ popOpen }: Pop) {
       <SpeedDial
         onClick={popOpen}
         ariaLabel="SpeedDial openIcon example"
-        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+        sx={{ position: 'fixed', bottom: 16, right: 16 }}
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
       />
     </Tooltip>

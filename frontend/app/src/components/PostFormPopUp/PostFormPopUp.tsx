@@ -9,6 +9,7 @@ import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
 
 // 投稿フォームのデータ型定義
 interface PostForm {
@@ -56,8 +57,15 @@ const PostFormPopUp = ({ onClose }: Pop) => {
   ];
 
   return (
-    <>
-      <h2>投稿フォーム</h2>
+    <Grid
+      container
+      alignItems="center"
+      justifyContent="center"
+      direction="column"
+    >
+      <Grid item xs={12}>
+        <h2>投稿フォーム</h2>
+      </Grid>
       <section>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="title">タイトル</label>
@@ -68,12 +76,12 @@ const PostFormPopUp = ({ onClose }: Pop) => {
             placeholder="タイトル"
             label="タイトル"
             multiline
+            sx={{ m: 1, width: '30ch' }}
             maxRows={4}
             {...register('title', {
               required: 'タイトルを入力して下さい',
               maxLength: { value: 50, message: '50文字以下で入力して下さい' },
             })}
-            style={{ height: 100 }}
           />
           <p>{errors.title?.message as React.ReactNode}</p>
           <label htmlFor="content">本文</label>
@@ -84,6 +92,7 @@ const PostFormPopUp = ({ onClose }: Pop) => {
             placeholder="相談内容"
             label="相談内容"
             multiline
+            sx={{ m: 1, width: '30ch' }}
             rows={4}
             maxRows={6}
             {...register('content', {
@@ -129,7 +138,7 @@ const PostFormPopUp = ({ onClose }: Pop) => {
           </Button>
         </form>
       </section>
-    </>
+    </Grid>
   );
 };
 
