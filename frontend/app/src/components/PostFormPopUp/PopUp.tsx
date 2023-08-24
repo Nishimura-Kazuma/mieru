@@ -16,7 +16,11 @@ const style = {
   p: 4,
 };
 
-export default function PopUp() {
+interface alert {
+  handleClick: () => void;
+}
+
+export default function PopUp({ handleClick }: alert) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -31,7 +35,12 @@ export default function PopUp() {
         aria-describedby="modal-modal-description"
       >
         <Box component="form" sx={style} noValidate autoComplete="off">
-          <PostFormPopUp onClose={handleClose} />
+          <PostFormPopUp
+            onClose={() => {
+              handleClose();
+              handleClick();
+            }}
+          />
         </Box>
       </Modal>
     </div>

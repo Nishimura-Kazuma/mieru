@@ -1,0 +1,53 @@
+.Card {
+  display: grid;
+  min-height: 80px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
+}
+
+/* // タイルレイアウト */
+.CardList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px 4%;
+  padding-bottom: 100;
+}
+
+/* // 見出し */
+.Heading {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 20px;
+  align-items: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #09f;
+  &::before,
+  &::after {
+    min-width: 30px;
+    height: 4px;
+    content: '';
+    border-top: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.right {
+  margin: 0 0 0 auto;
+}
+
+.textcenter {
+  text-align: center;
+}
+
+.underbar {
+  text-decoration: underline;
+  text-underline-offset: -0.2em;
+  text-decoration-thickness: 0.5em;
+  text-decoration-color: rgba(255, 228, 0, 0.4);
+  text-decoration-skip-ink: none;
+}
