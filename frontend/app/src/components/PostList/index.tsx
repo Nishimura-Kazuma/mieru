@@ -8,10 +8,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 interface Post {
   id: number;
   title: string;
+  user_id: number;
   user_name: string;
   scope: string;
   is_completed: boolean;
@@ -115,11 +117,16 @@ const PostList: React.FC = () => {
                 <div className="CardList">
                   {postData.scopeOnlyTeachers.map((post) => (
                     <div key={post.id}>
-                      <PostCell
-                        title={post.title}
-                        userName={post.user_name}
-                        isCompleted={post.is_completed}
-                      />
+                      <Link
+                        to={`/post/${post.user_id}`}
+                        style={{ textDecoration: 'none', color: 'black' }}
+                      >
+                        <PostCell
+                          title={post.title}
+                          userName={post.user_name}
+                          isCompleted={post.is_completed}
+                        />
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -128,11 +135,16 @@ const PostList: React.FC = () => {
                 <div className="CardList">
                   {postData.scopeAll.map((post) => (
                     <div key={post.id}>
-                      <PostCell
-                        title={post.title}
-                        userName={post.user_name}
-                        isCompleted={post.is_completed}
-                      />
+                      <Link
+                        to={`/post/${post.user_id}`}
+                        style={{ textDecoration: 'none', color: 'black' }}
+                      >
+                        <PostCell
+                          title={post.title}
+                          userName={post.user_name}
+                          isCompleted={post.is_completed}
+                        />
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -142,11 +154,16 @@ const PostList: React.FC = () => {
             <div className="CardList">
               {postData.scopeAll.map((post) => (
                 <div key={post.id}>
-                  <PostCell
-                    title={post.title}
-                    userName={post.user_name}
-                    isCompleted={post.is_completed}
-                  />
+                  <Link
+                    to={`/post/${post.user_id}`}
+                    style={{ textDecoration: 'none', color: 'black' }}
+                  >
+                    <PostCell
+                      title={post.title}
+                      userName={post.user_name}
+                      isCompleted={post.is_completed}
+                    />
+                  </Link>
                 </div>
               ))}
             </div>
