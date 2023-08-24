@@ -43,8 +43,6 @@ const HomePage = () => {
       <PostList />
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">
         <main>
-          {/* ここに主要なコンテンツを追加 */}
-          {/* <PostList /> */}
           <PopUp handleClick={handleClick} />
           <div>
             <Fab
