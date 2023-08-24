@@ -1,4 +1,7 @@
-const PostList: React.FC = () => {
+import { Link } from 'react-router-dom';
+import FetchPostDtailDataButton from '../../containers/PostDetail';
+
+const PostList = () => {
   const posts = [
     { id: 1, title: 'Post 1', username: 'User1' },
     { id: 2, title: 'Post 2', username: 'User2' },
@@ -6,15 +9,13 @@ const PostList: React.FC = () => {
 
   return (
     <div>
-      <h2>投稿一覧</h2>
+      <h1>Post List</h1>
       <ul>
-        {posts.map((post) => (
-          <li key={post.id} className="list-unstyled">
-            <div>
-              <p>{post.username}</p>
-              <h3>{post.title}</h3>
-              <div></div>
-            </div>
+        {posts.map((post: any) => (
+          <li key={post.id}>
+            <Link to={`/post/${post.id}`}>
+              <div>{post.title}</div>
+            </Link>
           </li>
         ))}
       </ul>

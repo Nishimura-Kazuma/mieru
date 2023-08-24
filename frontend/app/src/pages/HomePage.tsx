@@ -3,6 +3,7 @@ import PopUp from '../components/PostFormPopUp/PopUp';
 import Fab from '@mui/material/Fab';
 import PersonIcon from '@mui/icons-material/Person';
 import { useHistory } from 'react-router-dom';
+import PostList from '../components/PostList';
 
 const HomePage = () => {
   const history = useHistory();
@@ -15,8 +16,9 @@ const HomePage = () => {
       <Header />
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">
         <main>
+          {/* <main style={{ marginTop: '100px', overflowY: 'auto' }}> */}
           {/* ここに主要なコンテンツを追加 */}
-          {/* <PostList /> */}
+          <PostList />
           <PopUp />
           <div>
             <Fab
