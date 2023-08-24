@@ -14,21 +14,39 @@ interface Post {
   // last_updated_at: string;
 }
 
+interface PostListByScope {
+  scopeAll: Post[];
+  scopeOnlyTeachers: Post[];
+}
+
 const PostList: React.FC = () => {
   // const posts = [
   //   { id: 1, title: 'Post 1', username: 'User1' },
   //   { id: 2, title: 'Post 2', username: 'User2' },
   // ];
 
-  const [postData, setPostData] = useState<Post[] | null>(null);
+  const [postData, setPostData] = useState<PostListByScope | null>(null);
 
   useEffect(() => {
     const fetchPostData = async () => {
       try {
-        const fetchedPostData: Post[] | null = (
+        const fetchedPostData: Post[] = (
           await axios.get(`${API_BASE_URL}/post/`)
         ).data;
-        return setPostData(fetchedPostData);
+
+        const postDataScopeAll: Post[] = fetchedPostData.filter(
+          (post) => post.scope === '全員',
+        );
+        const postDataScopeOnlyTeachers: Post[] = fetchedPostData.filter(
+          (post) => post.scope === '保育士のみ',
+        );
+
+        const postLists: PostListByScope = {
+          scopeAll: postDataScopeAll,
+          scopeOnlyTeachers: postDataScopeOnlyTeachers,
+        };
+
+        return setPostData(postLists);
       } catch (error) {
         console.log('Error fetching data:', error);
       }
@@ -50,7 +68,7 @@ const PostList: React.FC = () => {
           {loginUserData.userData.user_attribute === '保育士' ? (
             // ボタンの設置 + スコープによるメッセージの分類
             <div className="CardList">
-              {postData.map((post) => (
+              {postData.scopeOnlyTeachers.map((post) => (
                 <div key={post.id}>
                   <PostCell
                     title={post.title}
@@ -63,6 +81,17 @@ const PostList: React.FC = () => {
           ) : (
             <>
               <p>保護者: スコープが all の質問のみを表示</p>
+              <div className="CardList">
+                {postData.scopeAll.map((post) => (
+                  <div key={post.id}>
+                    <PostCell
+                      title={post.title}
+                      userName={post.user_name}
+                      isCompleted={post.is_completed}
+                    />
+                  </div>
+                ))}
+              </div>
             </>
           )}
         </>
