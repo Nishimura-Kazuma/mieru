@@ -171,23 +171,6 @@ const PostList: React.FC = () => {
           <p>データを読み込んでいます...</p>
         </>
       )}
-      {/* {postData && loginUserData ? (
-          {loginUserData.userData.userAttribute === "保育士" ? (
-        <div className="CardList">
-          {postData.map((post) => (
-            <div key={post.id}>
-              <PostCell
-                title={post.title}
-                userName={post.user_name}
-                isCompleted={post.is_completed}
-              />
-            </div>
-          ))}
-        </div>
-          ):(<></>)}
-      ) : (
-        <p>データを読み込んでいます...</p>
-      )} */}
     </div>
   );
 };
