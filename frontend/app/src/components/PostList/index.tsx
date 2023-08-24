@@ -8,15 +8,15 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 interface Post {
   id: number;
   title: string;
+  user_id: number;
   user_name: string;
   scope: string;
   is_completed: boolean;
-  // num_of_comments: number;
-  // last_updated_at: string;
 }
 
 interface PostListByScope {
@@ -58,11 +58,6 @@ const a11yProps = (index: number) => {
 };
 
 const PostList: React.FC = () => {
-  // const posts = [
-  //   { id: 1, title: 'Post 1', username: 'User1' },
-  //   { id: 2, title: 'Post 2', username: 'User2' },
-  // ];
-
   const [postData, setPostData] = useState<PostListByScope | null>(null);
 
   useEffect(() => {
@@ -93,10 +88,7 @@ const PostList: React.FC = () => {
     fetchPostData();
   }, []);
 
-  // console.log(postData);
-
   const loginUserData = useSelector((state: any) => state.userData);
-  // console.log(loginUserData.userData);
 
   const [value, setValue] = React.useState(0);
 
@@ -122,54 +114,63 @@ const PostList: React.FC = () => {
                 </Tabs>
               </Box>
               <CustomTabPanel value={value} index={0}>
-                {/* 保護者のみ向けの相談 */}
                 <div className="CardList">
                   {postData.scopeOnlyTeachers.map((post) => (
                     <div key={post.id}>
-                      <PostCell
-                        title={post.title}
-                        userName={post.user_name}
-                        isCompleted={post.is_completed}
-                      />
+                      <Link
+                        to={`/post/${post.user_id}`}
+                        style={{ textDecoration: 'none', color: 'black' }}
+                      >
+                        <PostCell
+                          title={post.title}
+                          userName={post.user_name}
+                          isCompleted={post.is_completed}
+                        />
+                      </Link>
                     </div>
                   ))}
                 </div>
               </CustomTabPanel>
               <CustomTabPanel value={value} index={1}>
-                {/* 全体向けの相談 */}
                 <div className="CardList">
                   {postData.scopeAll.map((post) => (
                     <div key={post.id}>
-                      <PostCell
-                        title={post.title}
-                        userName={post.user_name}
-                        isCompleted={post.is_completed}
-                      />
+                      <Link
+                        to={`/post/${post.user_id}`}
+                        style={{ textDecoration: 'none', color: 'black' }}
+                      >
+                        <PostCell
+                          title={post.title}
+                          userName={post.user_name}
+                          isCompleted={post.is_completed}
+                        />
+                      </Link>
                     </div>
                   ))}
                 </div>
               </CustomTabPanel>
             </Box>
           ) : (
-            <>
-              <div className="CardList">
-                {postData.scopeAll.map((post) => (
-                  <div key={post.id}>
+            <div className="CardList">
+              {postData.scopeAll.map((post) => (
+                <div key={post.id}>
+                  <Link
+                    to={`/post/${post.user_id}`}
+                    style={{ textDecoration: 'none', color: 'black' }}
+                  >
                     <PostCell
                       title={post.title}
                       userName={post.user_name}
                       isCompleted={post.is_completed}
                     />
-                  </div>
-                ))}
-              </div>
-            </>
+                  </Link>
+                </div>
+              ))}
+            </div>
           )}
         </>
       ) : (
-        <>
-          <p>データを読み込んでいます...</p>
-        </>
+        <p>データを読み込んでいます...</p>
       )}
     </div>
   );

@@ -59,7 +59,7 @@ const PostFormPopUp = ({ onClose }: Pop) => {
     <>
       <h2>投稿フォーム</h2>
       <section>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
           <label htmlFor="title">タイトル</label>
           <br />
           {/* {...register("フィールド名", { ルール })}で、フィールド登録、必ルールを設定 */}
@@ -85,7 +85,6 @@ const PostFormPopUp = ({ onClose }: Pop) => {
             label="相談内容"
             multiline
             rows={4}
-            maxRows={6}
             {...register('content', {
               required: '内容を入力して下さい',
               maxLength: {
@@ -127,7 +126,7 @@ const PostFormPopUp = ({ onClose }: Pop) => {
           >
             送信
           </Button>
-        </form>
+        </div>
       </section>
     </>
   );
