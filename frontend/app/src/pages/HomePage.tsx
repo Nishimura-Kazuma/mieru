@@ -1,4 +1,4 @@
-import Header from '../components/Header/Header';
+import Header from '../components/Header';
 import PopUp from '../components/PostFormPopUp/PopUp';
 import PostList from '../components/PostList';
 import Fab from '@mui/material/Fab';
