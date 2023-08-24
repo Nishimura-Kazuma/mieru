@@ -103,6 +103,7 @@ const PostFormPopUp = ({ onClose }: Pop) => {
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              defaultValue="保育士のみ"
             >
               {radioButtons.map((radio) => {
                 const { id, label, value } = radio;
