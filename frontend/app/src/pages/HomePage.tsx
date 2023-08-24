@@ -24,7 +24,7 @@ const HomePage = () => {
               color="secondary"
               aria-label="add"
               sx={{
-                position: 'absolute',
+                position: 'fixed',
                 bottom: (theme: any) => theme.spacing(2),
                 left: (theme: any) => theme.spacing(2),
               }}
