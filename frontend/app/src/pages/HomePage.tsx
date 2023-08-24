@@ -1,5 +1,6 @@
 import Header from '../components/Header/Header';
 import PopUp from '../components/PostFormPopUp/PopUp';
+import PostList from '../components/PostList';
 import Fab from '@mui/material/Fab';
 import PersonIcon from '@mui/icons-material/Person';
 import { useHistory } from 'react-router-dom';
@@ -13,6 +14,7 @@ const HomePage = () => {
   return (
     <div className="d-flex flex-column vh-100">
       <Header />
+      <PostList />
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">
         <main>
           {/* ここに主要なコンテンツを追加 */}
