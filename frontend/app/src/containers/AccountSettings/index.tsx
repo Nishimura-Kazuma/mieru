@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SAVE_USER_NAME, UserActionTypes } from './types';
 import { API_BASE_URL } from '../API_BASE_URL';
 import { useHistory } from 'react-router-dom';
-import Header from '../../components/Header/header';
+import Header from '../../components/Header/Header';
 
 function FetchUserDataButton() {
   const dispatch = useDispatch();

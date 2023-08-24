@@ -1,4 +1,4 @@
-import Header from '../components/Header/header';
+import Header from '../components/Header/Header';
 
 const PostDtail = () => {
   return <Header />;
