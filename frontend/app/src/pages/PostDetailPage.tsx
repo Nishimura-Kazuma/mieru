@@ -1,6 +1,7 @@
 import Header from '../components/Header/Header';
 import PostDetail from '../components/PostDetail';
 
+
 const PostDtail = () => {
   return (
     <div className="d-flex flex-column vh-100">
