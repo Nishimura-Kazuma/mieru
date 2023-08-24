@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import MIERUN_LOGO from '../../assets/mierun_logo.png';
-import './header.css';
 
 const Header = () => {
   const history = useHistory();
@@ -13,17 +12,20 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed-top d-flex justify-content-between align-items-center p-3 bg-light w-100 border-bottom headerup">
-      <div onClick={moveHome}>
-        <img src={MIERUN_LOGO} alt="Logo" />
-      </div>
-      <div style={{ fontSize: '20px' }}>
-        name:{' '}
-        {userData && userData.userData.name
-          ? userData.userData.name
-          : 'Loading...'}
-      </div>
-    </header>
+    <>
+      <header className="fixed-top d-flex justify-content-between align-items-center p-3 bg-light w-100 border-bottom">
+        <div onClick={moveHome}>
+          <img src={MIERUN_LOGO} alt="Logo" />
+        </div>
+        <div style={{ fontSize: '20px' }}>
+          name:{' '}
+          {userData && userData.userData.name
+            ? userData.userData.name
+            : 'Loading...'}
+        </div>
+      </header>
+      <div className="headerup"></div>
+    </>
   );
 };
 
