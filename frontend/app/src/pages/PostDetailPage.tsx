@@ -1,5 +1,5 @@
 import Header from '../components/Header/Header';
-import PostDetail from '../components/PostDetail';
+import PostDetail from '../components/PostDetail/PostDetail';
 
 const PostDtail = () => {
   return (

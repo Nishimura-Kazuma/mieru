@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { API_BASE_URL } from '../../containers/API_BASE_URL';
-import PostCell from '../../components/PostCell';
+import PostCell from '../PostCell/PostCell';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
