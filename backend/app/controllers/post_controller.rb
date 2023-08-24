@@ -12,7 +12,7 @@ class PostController < ApplicationController
       post_user = User.find(post.user_id)
   
       post_ans["id"] = post.id
-      # post_ans["user_id"] = post.user_id
+      post_ans["user_id"] = post.user_id
       post_ans["title"] = post.title
       # post_ans["content"] = post.content
       post_ans["is_completed"] = post.is_completed
