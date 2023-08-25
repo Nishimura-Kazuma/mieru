@@ -1,21 +1,53 @@
-# react-rails-web-app
+<br>
+<br>
+<br>
+<div align="center">
+  <img src="https://github.com/tier4/CARET_analyze/assets/96073800/6cf54abd-400c-40a6-bced-80660ac9b337" />
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-**Last Update: August 18th, 2023**
+-----------------
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![Ruby on Rails](https://img.shields.io/badge/Ruby%20on%20Rails-CC0000?logo=ruby-on-rails&logoColor=white)
 
-Team E の開発用リポジトリ
+# 特徴
 
-## ローカルでの環境構築
+- 保護者からの相談に対して、保育士と周りの保護者が協力して一緒に問題を解決するSNS
 
-### 前提条件
+# 機能
 
-- MacOS, Ubuntu など、Unix 系コマンドの使える環境で環境構築を行うことを前提とします。
-- Docker が使える環境であることを前提とします。
-- Git が使える環境であることを前提とします。
-- Github のプライベートリポジトリに ssh 接続して push, pull などの操作ができる状態になっていることを前提とします。(秘密鍵・公開鍵の設定、ユーザー名・メールアドレスの設定などが必要です。)
-- 以下の手順において、`docker compose` の記述があります。お手元の docker-compose のバージョンが v1 である場合は、`docker compose` を `docker-compose` に書き換えてください。
-- 以下、コードブロックに書かれたコマンドはすべてターミナル上で実行するものです。
+#### 保護者ユーザー
 
-### 構築の手順
+- 相談を投稿できる（タイトル30字以内、内容300字以内）
+- 投稿を公開する範囲を指定することができる（全員が見れる or 保育士だけ）
+- 他の人が投稿した相談一覧を見ることができる
+- 相談一覧から、回答したい投稿を選択し返信することができる
+- 自分の投稿に寄せられた返信の中からベストアンサーを決めることができ、それによって相談を解決済みにすることができる
+- 他者の投稿への返信数や、ベストアンサーに選ばれた数に応じてポイントが付与される
+- 保育士からの返信には、保育士であることが分かるラベルが張られる
+
+#### 保育士ユーザー
+
+- 保護者が投稿した相談内容を見ることができる
+- 公開範囲が保育士だけの投稿と、全員が見れる投稿の一覧を切り替えて表示することができる
+- 相談一覧から、回答したい投稿を選択し返信することができる
+
+# 構築の手順
+
+## 前提条件
+
+- MacOS, Ubuntu など、Unix 系コマンドの使える環境であること
+- Docker が使える環境であること
+- Git が使える環境であること
+- 以下の手順において、`docker compose` の記述があるが、手元の docker-compose のバージョンが v1 である場合は、`docker compose` を `docker-compose` に書き換えて実行する
+
+## 環境構築
 
 #### リポジトリのクローン
 
@@ -102,7 +134,7 @@ cd react-rails-web-app
   rails db:migrate
   ```
 
-- コンテナから出る
+- ※コンテナから出る場合
   ```sh
   exit
   ```
@@ -130,14 +162,9 @@ cd react-rails-web-app
 - 動作確認
 
   ブラウザで [localhost:3000](http://localhost:3000/) にアクセスした際に、以下のような文字列が表示されていれば正しく動作しています。
-
   ***
 
-  ToDo List
-
-  - sample1
-  - sample2
-  - sample3
+  画像か何かを貼る予定
 
   ***
 
@@ -145,151 +172,13 @@ cd react-rails-web-app
 
   ターミナル上で `control` + `C` キーにより React を終了する。
 
-- コンテナから出る
+- ※コンテナから出る場合
   ```sh
   exit
   ```
 
-#### Docker コンテナの終了
-
-```sh
-docker compose down
-```
-
 ---
 
-## 開発時の操作マニュアル (最低限)
-
-### 最初の準備
-
-#### プロジェクトディレクトリへの移動
-
-```sh
-cd [react-rails-web-app へのパス]
-```
-
-#### Docker コンテナの起動
-
-```sh
-docker compose up -d
-```
-
-#### 作業ブランチへの移動
-
-```sh
-git checkout [作業ブランチ名]
-```
-
-あるいは
-
-```sh
-git switch [作業ブランチ名]
-```
-
-リモートリポジトリで作成したブランチをローカルに取り込む場合は、以下のコマンドを打つ。
-
-```sh
-git fetch --all
-```
-
-**main ブランチで作業しないよう注意！！**
-
-#### 作業ブランチの更新
-
-```sh
-git pull origin [作業ブランチ名]
-```
-
-### フロントエンドの開発
-
-#### フロントエンドのコンテナ (front) へ入る
-
-```sh
-docker compose exec front bash
-```
-
-#### mode_modules のファイル更新
-
-`frontend/app/package.json` が更新されている場合に以下のコマンドを打つことが必要です。
-念のため毎回打つのが安心だと思います。
-
-```sh
-npm install
-```
-
-#### React の起動
-
-```sh
-npm start
-```
-
-#### 作業
-
-- ブラウザで [localhost:3000](http://localhost:3000/) にアクセスし、フロントエンドのアプリケーション画面を開きながら開発します。React 関連のファイルを更新すると自動的に build され、アプリケーションの画面が更新されます。
-
-- React を起動している間は先程まで使用していたターミナルが使用できなくなるため、別のターミナルを起動することをおすすめします。
-
-- 作業が終了したら、`control` + `C` で React を終了させてください。
-
-#### コンテナから出る
-
-```sh
-exit
-```
-
-### バックエンドの開発
-
-#### バックエンドのコンテナ (api) へ入る
-
-```sh
-docker compose exec api bash
-```
-
-#### Gem の更新
-
-`backend/Gemfile` が更新されている場合に以下のコマンドを打つことが必要です。
-念のため毎回打つのが安心だと思います。
-
-```sh
-bundle install
-```
-
-#### 作業
-
-- バックエンドのサーバーはすでに 3001 番ポートで動作しています。
-  `rails s` コマンドを打つ必要はありません。
-  ブラウザから [localhost:3001](http://localhost:3001/) にアクセスすることで動作確認などを行うことができます。
-
-- 環境構築後の初期状態においては、[localhost:3001/samples](http://localhost:3001/samples)にアクセスすると、samples デーブルに格納されているデータが JSON 形式で表示されます。
-
-#### コンテナから出る
-
-```sh
-exit
-```
-
-### Git 関連 (最低限)
-
-VSCode の拡張機能などを利用すれば、CUI (Charactor User Interface) でなく GUI (Graphical User Interface) で git 関連の操作を行うことができます。
-以下は、CUI (つまりターミナル) を用いる場合の操作方法です。
-
-#### 追加/更新/削除したファイルを git に追加 (add)
-
-```sh
-git add [追加したいファイル/ディレクトリ]
-```
-
-#### 変更履歴を git にコメント付きで記録 (commit)
-
-```sh
-git commit -m "[コミットメッセージ]"
-```
-
-#### ローカルリポジトリの状態をリモートリポジトリへ反映 (push)
-
-```sh
-git push origin [push するブランチ名]
-```
 
 ### 作業終了後の操作
 
@@ -298,3 +187,22 @@ git push origin [push するブランチ名]
 ```sh
 docker compose down
 ```
+
+
+
+# 使用言語・パッケージ
+### フロントエンド
+- Typescript
+- React
+  
+フロントエンドの各種バージョン情報の詳細は、frontend/app/package.jsonを参照
+
+### バックエンド
+- Ruby on rails
+  
+バックエンドの各種バージョン情報の詳細は、backend/Gemfileを参照
+
+
+
+
+  
